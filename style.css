@@ -1,0 +1,77 @@
+
+body {
+    background: #489078;
+    font-family: "Arial", sans-serif;
+    color: #ECEAE7;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 520px;
+    margin: auto;
+}
+.card {
+    background: #4b4446;
+    padding: 24px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+}
+.menu-title {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.food, .dip, .drink {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 14px;
+}
+
+.food-name, .dips-title, .drink-title {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: inline-block;
+    color: #ECEAE7;
+}
+
+.dots {
+    flex: 1;
+    border-bottom: 3px dotted #ECEAE7;
+    margin: 0 10px;
+    height: 0; 
+}
+
+.price {
+    font-weight: 700;
+    line-height: 1;
+    display: inline-block;
+}
+
+.description {
+    color: #e3e3e3;
+    margin: 4px 0 16px;
+    font-size: 14px;
+}
+.menu-btns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.menu-btns button {
+    background: #605858;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu-btns button:hover {
+    background: #353131;
+}
