@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yum yum gim me sum</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/cart.css">
+    <link rel="stylesheet" href="./styles/eta.css">
     <script type="module" src="main.js"></script>
 </head>
 <body>
-    <div class="container">
+    <!--Meny-->
+    <div class="view menu-view active">
+        <div class="container">
+            <div class="icon-wrapper">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                </svg>
+                <span class="cart-badge" id="cartCount"></span>
+            </div>
+        </div>
         <h1 class="menu-title">Meny</h1>
 
         <div class="card">
@@ -89,11 +100,13 @@
     </div>
 
     <!--Kundvagn-->
-    <div class="cart">
-        <div class="cart-header">
-            <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="view cart-view">
+        <div class="cart">
+            <div class="cart-header">
+                <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-            </svg>
+                </svg>
+            </div>
         </div>
 
         <div class="cart-items">
@@ -179,6 +192,24 @@
 
         <!-- Beställningsknapp -->
         <button class="btn-order">TAKE MY MONEY!</button>
+    </div>
+
+    <!--ETA-->
+    <div class="view eta-view">
+    <div class="confirmation-container">
+        <div class="food-box">
+            <div class="logo">
+                <img class="logo-img" src="img/lunchbox.png" alt="lunchbox logo">
+            </div>
+        </div>
+
+        <h1>Dina wontons<br>tillagas!</h1>
+        <p class="eta"></p>
+        <p class="order-id">#4KJWSDF2</p>
+
+        <button class="btn btn-receipt">Se kvitto</button>
+        <button class="btn btn-new-order">Gör en ny beställning</button>
+        </div>
     </div>
 </body>
 </html>

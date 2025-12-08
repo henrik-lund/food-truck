@@ -1,0 +1,139 @@
+body {
+    font-family: "Arial", sans-serif;
+    background: #489078;
+    color: #ECEAE7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    background: #489078;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.icon-wrapper {
+    position: relative;
+    display: inline-block;
+    align-self: flex-end;
+}
+
+.icon {
+    width: 75px;
+    height: 76px;
+    padding: 1em;
+    border-radius: 0.3em;
+    color: black;
+    background-color: white;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.card {
+    background: #4b4446;
+    padding: 24px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+}
+.menu-title {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.food, .dip, .drink {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 14px;
+}
+
+.food-name, .dips-title, .drink-title {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: inline-block;
+    color: #ECEAE7;
+}
+
+.dots {
+    flex: 1;
+    border-bottom: 3px dotted #ECEAE7;
+    margin: 0 10px;
+    height: 0; 
+}
+
+.price {
+    font-weight: 700;
+    line-height: 1;
+    display: inline-block;
+}
+
+.description {
+    color: #e3e3e3;
+    margin: 4px 0 16px;
+    font-size: 14px;
+}
+.menu-btns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.menu-btns button {
+    background: #605858;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu-btns button:hover {
+    background: #353131;
+}
+view {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Meny-vy (grön) */
+.menu-view {
+    background: #489078;
+}
+
+/* Kundvagns-vy (gul/beige) */
+.cart-view {
+    background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+}
+
+/* ETA-vy (grå) */
+.eta-view {
+    background: linear-gradient(to bottom, #5a5458, #4a4347);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
