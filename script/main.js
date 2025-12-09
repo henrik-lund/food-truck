@@ -1,4 +1,5 @@
-let apiKey = null;
+import {renderMenu, addToCart, cart, updateCartUI, getMenu, initMenu, setApiKey} from './menu.js';
+export let apiKey = null;
 
 async function getApiKey() {
     const response = await fetch('https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/keys', {
@@ -30,9 +31,12 @@ async function createTenant() {
         body: JSON.stringify(bodyToSend)
     };
 
-    const response = await fetch(url, options);
-    const data = await response.json();
-    console.log('Tenant skapad:', data);
 }
 
-createTenant();
+async function initApp() {
+    await createTenant();
+    setApiKey(apiKey);  
+    initMenu();
+}
+
+initApp();

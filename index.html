@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/cart.css">
     <link rel="stylesheet" href="./styles/eta.css">
-    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="./styles/view.css">
+    <script type="module" src="./script/main.js"></script>
+    <script type="module" src="./script/menu.js"></script>
 </head>
 <body>
     <!--Meny-->
@@ -17,48 +19,12 @@
                 <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
-                <span class="cart-badge" id="cartCount"></span>
+                <span class="cart-badge" id="cart-count"></span>
             </div>
         </div>
         <h1 class="menu-title">Meny</h1>
 
-        <div class="card">
-            <div class="food">
-                <span class="food-name">Karlstad</span>
-                <span class="dots"></span>
-                <span class="price"> 9SEK</span>
-            </div>
-            <p class="description">kantarell, scharlottenlök, morot, bladpersilja</p>
-        
-            <div class="food">
-                <span class="food-name">Bangkok</span>
-                <span class="dots"></span>
-                <span class="price"> 9SEK</span>
-            </div>
-            <p class="description">morot, salladslök, chili, kokos, lime, koriander</p>
-        
-            <div class="food">
-                <span class="food-name">Ho Chi Minh</span>
-                <span class="dots"></span>
-                <span class="price"> 9SEK</span>
-            </div>
-            <p class="description">kål, salladslök, chili, vitlök, ingefära, tofu</p>
-        
-            <div class="food">
-                <span class="food-name">Paris</span>
-                <span class="dots"></span>
-                <span class="price"> 9SEK</span>
-            </div>
-            <p class="description">kål, chevré, honung, basilika, valnötspasta</p>
-        
-            <div class="food">
-                <span class="food-name">Oaxaca</span>
-                <span class="dots"></span>
-                <span class="price"> 9SEK</span>
-            </div>
-            <p class="description">majs, tomat, rostade ärtor, vitlök, lime</p>
-        </div>
-
+        <div id="menu-container"></div>
         <!-- Dipsåser -->
         
         <div class="card">
@@ -128,7 +94,7 @@
             <div class="quantity-controls">
                 <button class="btn-quantity">+</button>
                 <span class="quantity-text">2 stycken</span>
-                <button class="btn-quantity">−</button>
+                <button class="btn-quantity">-</button>
             </div>
         </div>
 
