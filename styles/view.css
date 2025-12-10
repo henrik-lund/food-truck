@@ -1,0 +1,30 @@
+view {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.view.active {
+    display: block;
+}
+
+
+.menu-view {
+    background: #489078;
+    padding: 2em;
+}
+
+
+.cart-view {
+    background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+    padding: 2em;
+}
+
+
+.eta-view {
+    background: linear-gradient(to bottom, #5a5458, #4a4347);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
