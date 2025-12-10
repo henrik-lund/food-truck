@@ -1,4 +1,6 @@
 import { cart } from './menu.js';
+import { generateOrderId } from './eta.js';
+
 
 function switchToCart() {
     document.querySelector('.menu-view').classList.remove('active');
@@ -56,7 +58,6 @@ function decreaseQuantity(itemId) {
         if (item.quantity > 1) {
             item.quantity -= 1;
         } else {
-            // Ta bort från cart om quantity blir 0
             const index = cart.findIndex(cartItem => cartItem.id === itemId);
             cart.splice(index, 1);
         }
@@ -64,5 +65,34 @@ function decreaseQuantity(itemId) {
     }
 }
 document.querySelector('.icon-wrapper').addEventListener('click', switchToCart);
+document.querySelector('.btn-order').addEventListener('click', () => {
+    document.querySelector('.cart-view').classList.remove('active');
+    document.querySelector('.eta-view').classList.add('active');
+    const orderId = generateOrderId();
+    document.querySelector('.eta-view .order-id').textContent = orderId;
+    const wontons = cart.filter(item => item.type === 'wonton');
+    const dips = cart.filter(item => item.type === 'dip');
+    const drinks = cart.filter(item => item.type === 'drink');
+    let title = '';
+    if (wontons.length > 0 && dips.length === 0 && drinks.length === 0) {
+        // Endast wontons
+        if (wontons.length === 1 && wontons[0].quantity === 1) {
+            title = `Din ${wontons[0].name} tillagas!`;
+        } else {
+            title = 'Dina wontons tillagas!';
+        }
+    } else if (dips.length > 0 && wontons.length === 0 && drinks.length === 0) {
+        // Endast dips
+        title = 'Dina dipsåser är klara!';
+    } else if (drinks.length > 0 && wontons.length === 0 && dips.length === 0) {
+        // Endast drycker
+        title = 'Dina drycker är klara!';
+    } else {
+        // Blandad beställning
+        title = 'Din beställning tillagas!';
+    }
+    
+    document.querySelector('.eta-view .eta-title').textContent = title;
+});
 
 export { switchToCart, renderCart, increaseQuantity, decreaseQuantity };

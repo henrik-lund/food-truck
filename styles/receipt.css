@@ -1,0 +1,206 @@
+/* .receipt-view {
+    width: 100%;
+    background-color: #353131;
+}       
+
+.receipt {
+    background: white;
+    border-radius: 20px 20px 0 0;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.receipt-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.order-number {
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+.receipt-item:not(:last-child) {
+    border-bottom: 2px dotted #ccc;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.item-quantity {
+    font-size: 14px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.item-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.total-section {
+    background: #d4d4d4;
+    border-radius: 0 0 20px 20px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.total-info h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.total-info p {
+    font-size: 14px;
+    color: #555;
+}
+
+.total-price {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+}
+
+.new-order-btn {
+    width: 100%;
+    background: #2d2d2d;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.new-order-btn:hover {
+    background: #1a1a1a;
+} */
+
+.receipt-view {
+    background-color: #353131;
+    display: none;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.receipt-view.active {
+    display: flex;
+}
+
+.receipt {
+    background: white;
+    border-radius: 20px;
+    padding: 2em;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.receipt-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+.order-id {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 1.5em;
+}
+
+.receipt-items {
+    margin: 2em 0;
+    text-align: left;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 0.5em;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.item-quantity {
+    font-size: 14px;
+    color: #666;
+}
+
+.item-price {
+    font-weight: bold;
+    text-align: right;
+}
+
+.total-section {
+    background: #e0e0e0;
+    padding: 1.5em;
+    border-radius: 10px;
+    margin: 2em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-info h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.total-info p {
+    font-size: 12px;
+    color: #666;
+    margin: 0.5em 0 0 0;
+}
+
+.total-price {
+    font-size: 32px;
+    font-weight: bold;
+}

@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/cart.css">
     <link rel="stylesheet" href="./styles/eta.css">
+    <link rel="stylesheet" href="./styles/receipt.css"> 
     <link rel="stylesheet" href="./styles/view.css">
     <script type="module" src="./script/main.js"></script>
     <script type="module" src="./script/menu.js"></script>
     <script type="module" src="./script/dips.js"></script>
     <script type="module" src="./script/cart.js"></script>
+    <script type="module" src="./script/eta.js"></script>
+    <script type="module" src="./script/receipt.js"></script>
 </head>
 <body>
     <!--Meny-->
@@ -63,13 +66,37 @@
             </div>
         </div>
 
-        <h1>Dina wontons<br>tillagas!</h1>
-        <p class="eta"></p>
-        <p class="order-id">#4KJWSDF2</p>
+        <h1 class="eta-title"><br>Tillagas</h1>
+        <p class="eta-time"></p>
+        <p class="order-id">#</p>
 
         <button class="btn btn-receipt">Se kvitto</button>
         <button class="btn btn-new-order">Gör en ny beställning</button>
         </div>
+    </div>
+
+    <!--Kvitto-->
+    <div class="view receipt-view">
+        
+        <div class="receipt">
+            <img src="img/logo (1).png" alt="logo" class="receipt-logo">
+            <h1 class="receipt-title">Kvitto</h1>
+            <p class="order-id">#</p>
+
+            <div class="receipt-items"></div>
+        </div>
+
+        <!-- Total sektion -->
+        <div class="total-section">
+            <div class="total-info">
+                <h2>Totalt</h2>
+                <p>inkl 20% moms</p>
+            </div>
+            <div class="total-price">120 SEK</div>
+        </div>
+
+        <!-- Ny beställning knapp -->
+        <button class="btn btn-new-order">Gör en ny beställning</button>
     </div>
 </body>
 </html>
