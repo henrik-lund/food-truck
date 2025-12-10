@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./styles/view.css">
     <script type="module" src="./script/main.js"></script>
     <script type="module" src="./script/menu.js"></script>
+    <script type="module" src="./script/dips.js"></script>
+    <script type="module" src="./script/cart.js"></script>
 </head>
 <body>
     <!--Meny-->
@@ -25,44 +27,6 @@
         <h1 class="menu-title">Meny</h1>
 
         <div id="menu-container"></div>
-        <!-- Dipsåser -->
-        
-        <div class="card">
-            
-            <div class="dip">
-                <h2 class="dips-title">Dipsås</h2>
-                <span class="dots"></span>
-                <span class="price">19 SEK</span>
-            </div>
-
-            <div class="menu-btns">
-                <button>sweet chili</button>
-                <button>wonton std</button>
-                <button>sweet & sour</button>
-                <button>hot mango</button>
-                <button>chili mayo</button>
-                <button>guacamole</button>
-            </div>
-        </div>
-
-        <!--Dricka-->
-        
-        <div class="card">
-            
-            <div class="drink">
-                <h3 class="drink-title">Dricka</h3>
-                <span class="dots"></span>
-                <span class="price">19 SEK</span>
-            </div>
-            <div class="menu-btns">
-                <button>Fanta Orange</button>
-                <button>Fanta Exotic</button>
-                <button>Coca Cola</button>
-                <button>Sprite</button>
-                <button>LOKA Granatäpple</button>
-                <button>LOKA Citrus</button>
-            </div>
-        </div>
     </div>
 
     <!--Kundvagn-->
@@ -75,88 +39,18 @@
             </div>
         </div>
 
-        <div class="cart-items">
-            <div class="item-header">
-                <h4 class="item-name">Karlstad</h4>
-                <span class="item-price">27SEK</span>
-            </div>
-            <div class="quantity-controls">
-                <button class="btn-quantity">+</button>
-                <span class="quantity-text">3 stycken</span>
-                <button class="btn-quantity">-</button>
-            </div>
-        </div>
-        <div class="cart-item">
-            <div class="item-header">
-                <h4 class="item-name">HO CHI MINH</h4>
-                <span class="item-price">18 SEK</span>
-            </div>
-            <div class="quantity-controls">
-                <button class="btn-quantity">+</button>
-                <span class="quantity-text">2 stycken</span>
-                <button class="btn-quantity">-</button>
-            </div>
-        </div>
+        <div class="cart-items"></div>
 
-        <div class="cart-item">
-            <div class="item-header">
-                <h3 class="item-name">KINGSTON</h3>
-                <span class="item-price">18 SEK</span>
-            </div>
-            <div class="quantity-controls">
-                <button class="btn-quantity">+</button>
-                <span class="quantity-text">2 stycken</span>
-                <button class="btn-quantity">−</button>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <div class="item-header">
-                <h3 class="item-name">SWEET CHILI DIP</h3>
-                <span class="item-price">19 SEK</span>
-            </div>
-            <div class="quantity-controls">
-                <button class="btn-quantity">+</button>
-                <span class="quantity-text">1 stycken</span>
-                <button class="btn-quantity">−</button>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <div class="item-header">
-                <h3 class="item-name">GUACAMOLE</h3>
-                <span class="item-price">19 SEK</span>
-            </div>
-            <div class="quantity-controls">
-                <button class="btn-quantity">+</button>
-                <span class="quantity-text">1 stycken</span>
-                <button class="btn-quantity">−</button>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <div class="item-header">
-                <h3 class="item-name">FANTA ORANGE</h3>
-                <span class="item-price">19 SEK</span>
-            </div>
-            <div class="quantity-controls">
-                <button class="btn-quantity">+</button>
-                <span class="quantity-text">1 stycken</span>
-                <button class="btn-quantity">−</button>
-            </div>
-    </div>
-    <!-- Total -->
         <div class="total-section">
             <div class="total-header">
                 <div>
                     <h2 class="total-title">TOTALT</h2>
                     <p class="total-subtitle">inkl 20% moms</p>
                 </div>
-                <span class="total-price">120 SEK</span>
+                <span class="total-price"></span>
             </div>
         </div>
 
-        <!-- Beställningsknapp -->
         <button class="btn-order">TAKE MY MONEY!</button>
     </div>
 

@@ -1,4 +1,5 @@
 import {renderMenu, addToCart, cart, updateCartUI, getMenu, initMenu, setApiKey} from './menu.js';
+import { switchToCart, renderCart, increaseQuantity, decreaseQuantity } from './cart.js';
 export let apiKey = null;
 
 async function getApiKey() {

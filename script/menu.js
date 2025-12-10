@@ -1,5 +1,8 @@
-// Importera apiKey senare när det är initialiserat
+import { renderDips } from './dips.js';
+import { renderDrinks } from './drinks.js';
+
 let apiKey = null;
+let cart = [];
 
 export function setApiKey(key) {
     apiKey = key;
@@ -15,18 +18,14 @@ async function getMenu() {
     const menu = await response.json();
     return menu;
 }
-
-// Rendera menyn
+//Rendera menyn
 function renderMenu(menuItems) {
     const container = document.querySelector('#menu-container');
     container.innerHTML = '';
-    
-    // Gruppera items efter typ
     const wontons = menuItems.filter(item => item.type === 'wonton');
     const dips = menuItems.filter(item => item.type === 'dip');
     const drinks = menuItems.filter(item => item.type === 'drink');
     
-    // Rendera Wontons
     if (wontons.length > 0) {
         const wontonsCard = document.createElement('div');
         wontonsCard.className = 'card';
@@ -39,46 +38,43 @@ function renderMenu(menuItems) {
         <span class="dots"></span>
         <span class="price">${wonton.price} SEK</span>`;
             wontonsCard.appendChild(foodDiv);
-            
-            // Ingredienser
             if (wonton.ingredients && wonton.ingredients.length > 0) {
                 const description = document.createElement('p');
                 description.className = 'description';
                 description.textContent = wonton.ingredients.join(', ');
                 wontonsCard.appendChild(description);
             }
-            
-            // Gör klickbar för att lägga till i varukorg
             foodDiv.style.cursor = 'pointer';
             foodDiv.addEventListener('click', () => addToCart(wonton));
         });
         
         container.appendChild(wontonsCard);
-    }}
-    
-    async function initMenu() {
-        try {
-            const response = await getMenu();
-            const menuItems = response.items || response;  // Hämta items från objektet
-            console.log('Menu items från API:', menuItems);
-            renderMenu(menuItems);
-        } catch (error) {
-            console.error('Fel vid hämtning av meny:', error);
-        }
     }
+    
+    // Rendera Dipsåser
+    renderDips(dips, container);
+    
+    // Rendera Drycker
+    renderDrinks(drinks, container);
+} 
 
-// Global varukorg
-let cart = [];
+async function initMenu() {
+    try {
+        const response = await getMenu();
+        const menuItems = response.items || response;
+        console.log('Menu items från API:', menuItems);
+        renderMenu(menuItems);
+    } catch (error) {
+        console.error('Fel vid hämtning av meny:', error);
+    }
+}
 
 function addToCart(item) {
-    // Kolla om itemet redan finns i varukorgen
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     
     if (existingItem) {
-        // Om det finns redan, öka mängden
         existingItem.quantity = (existingItem.quantity || 1) + 1;
     } else {
-        // Annars lägg till nytt item med quantity = 1
         cart.push({
             ...item,
             quantity: 1
@@ -86,7 +82,7 @@ function addToCart(item) {
     }
     
     console.log('Nuvarande varukorg:', cart);
-    updateCartUI();  // Anropa detta för att uppdatera UI
+    updateCartUI(); 
 }
 
 function updateCartUI() {
@@ -94,10 +90,10 @@ function updateCartUI() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     
     if (totalItems > 0) {
-        cartCount.style.display = 'flex';  // Visa den
+        cartCount.style.display = 'flex';  
         cartCount.textContent = totalItems;
     } else {
-        cartCount.style.display = 'none';  // Dölj den
+        cartCount.style.display = 'none'; 
     }
 }
 
