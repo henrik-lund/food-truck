@@ -1,15 +1,15 @@
 import { cart, updateCartUI } from './menu.js';
 import { getCurrentOrderId } from './eta.js';
+import { switchView } from './views.js';
+import { getLastOrderId } from './cart.js';
 
 document.querySelector('.btn-receipt').addEventListener('click', () => {
-    
-    document.querySelector('.eta-view').classList.remove('active');
-    document.querySelector('.receipt-view').classList.add('active');
+    switchView('eta-view', 'receipt-view');
     
     renderReceipt();
     
 });
-export function renderReceipt() {
+function renderReceipt() {
     const receiptItemsContainer = document.querySelector('.receipt-items');
     receiptItemsContainer.innerHTML = '';
     cart.forEach(item => {
@@ -25,16 +25,13 @@ export function renderReceipt() {
         receiptItemsContainer.appendChild(itemDiv);
     });
     
-    
-    document.querySelector('.receipt-view .order-id').textContent = getCurrentOrderId();
-    
-    
+    document.querySelector('.receipt-view .order-id').textContent = '#' + getLastOrderId();
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     document.querySelector('.receipt-view .total-price').textContent = total + ' SEK';
 }
 document.querySelector('.receipt-view .btn-new-order').addEventListener('click', () => {
-    document.querySelector('.receipt-view').classList.remove('active');
-    document.querySelector('.menu-view').classList.add('active');
+    switchView('receipt-view', 'menu-view');
     cart.length = 0;
     updateCartUI();
 });
+export { renderReceipt };

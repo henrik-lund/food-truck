@@ -1,10 +1,9 @@
-import { addToCart } from './menu.js';
+import { addToCart, renderMenu } from './menu.js';
 
 function renderDrinks(drinks, container) {
     if (drinks.length > 0) {
         const drinksCard = document.createElement('div');
         drinksCard.className = 'card';
-        
         const drinksHeader = document.createElement('div');
         drinksHeader.className = 'drink';
         drinksHeader.innerHTML = `
@@ -12,10 +11,8 @@ function renderDrinks(drinks, container) {
         <span class="dots"></span>
         <span class="price">${drinks[0].price} SEK</span>`;
         drinksCard.appendChild(drinksHeader);
-        
         const drinksButtons = document.createElement('div');
         drinksButtons.className = 'menu-btns';
-        
         drinks.forEach(drink => {
             const button = document.createElement('button');
             button.textContent = drink.name;
@@ -24,7 +21,6 @@ function renderDrinks(drinks, container) {
             button.addEventListener('click', () => addToCart(drink));
             drinksButtons.appendChild(button);
         });
-        
         drinksCard.appendChild(drinksButtons);
         container.appendChild(drinksCard);
     }

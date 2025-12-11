@@ -1,19 +1,17 @@
 import { renderReceipt } from './receipt.js';
 import { cart, updateCartUI } from './menu.js';
+import { switchView } from './views.js';
 
-document.querySelector('.eta-title').textContent = 'Dina wontons tillagas!';
+document.querySelector('.eta-title').textContent = 'Din mat tillagas!';
 document.querySelector('.eta-time').textContent = 'ETA 5 MIN';
 document.querySelector('.btn-new-order').addEventListener('click', () => {
-    // Töm varukorgen
+    // Töm varukorgen vid ny beställning
     cart.length = 0;
     updateCartUI();
-    
-    document.querySelector('.eta-view').classList.remove('active');
-    document.querySelector('.menu-view').classList.add('active');
+    switchView('eta-view', 'menu-view');
 });
 let currentOrderId = '';
-
-export function generateOrderId() {
+function generateOrderId() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let id = '';
     for (let i = 0; i < 8; i++) {
@@ -23,9 +21,9 @@ export function generateOrderId() {
     return currentOrderId;
 }
 document.querySelector('.btn-receipt').addEventListener('click', () => {
-    document.querySelector('.eta-view').classList.remove('active');
-    document.querySelector('.receipt-view').classList.add('active');
+    switchView('eta-view', 'receipt-view');
 });
-export function getCurrentOrderId() {
+function getCurrentOrderId() {
     return currentOrderId;
 }
+export { generateOrderId, getCurrentOrderId };

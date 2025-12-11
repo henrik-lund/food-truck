@@ -10,40 +10,37 @@
     <link rel="stylesheet" href="./styles/receipt.css"> 
     <link rel="stylesheet" href="./styles/view.css">
     <script type="module" src="./script/main.js"></script>
-    <script type="module" src="./script/menu.js"></script>
-    <script type="module" src="./script/dips.js"></script>
-    <script type="module" src="./script/cart.js"></script>
-    <script type="module" src="./script/eta.js"></script>
-    <script type="module" src="./script/receipt.js"></script>
+    
 </head>
 <body>
     <!--Meny-->
     <div class="view menu-view active">
         <div class="container">
+            <h1 class="menu-title">Meny</h1>
             <div class="icon-wrapper">
                 <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
                 <span class="cart-badge" id="cart-count"></span>
             </div>
         </div>
-        <h1 class="menu-title">Meny</h1>
-
+        
+        
         <div id="menu-container"></div>
     </div>
-
+    
     <!--Kundvagn-->
     <div class="view cart-view">
         <div class="cart">
             <div class="cart-header">
                 <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
             </div>
         </div>
-
+        
         <div class="cart-items"></div>
-
+        
         <div class="total-section">
             <div class="total-header">
                 <div>
@@ -53,28 +50,28 @@
                 <span class="total-price"></span>
             </div>
         </div>
-
+        
         <button class="btn-order">TAKE MY MONEY!</button>
     </div>
-
+    
     <!--ETA-->
     <div class="view eta-view">
-    <div class="confirmation-container">
-        <div class="food-box">
-            <div class="logo">
-                <img class="logo-img" src="img/lunchbox.png" alt="lunchbox logo">
+        <div class="confirmation-container">
+            <div class="food-box">
+                <div class="logo">
+                    <img class="logo-img" src="img/lunchbox.png" alt="lunchbox logo">
+                </div>
             </div>
-        </div>
-
-        <h1 class="eta-title"><br>Tillagas</h1>
-        <p class="eta-time"></p>
-        <p class="order-id">#</p>
-
-        <button class="btn btn-receipt">Se kvitto</button>
-        <button class="btn btn-new-order">Gör en ny beställning</button>
+            
+            <h1 class="eta-title"><br>Tillagas</h1>
+            <p class="eta-time"></p>
+            <p class="order-id">#</p>
+            
+            <button class="btn btn-receipt">Se kvitto</button>
+            <button class="btn btn-new-order">Gör en ny beställning</button>
         </div>
     </div>
-
+    
     <!--Kvitto-->
     <div class="view receipt-view">
         
@@ -82,10 +79,10 @@
             <img src="img/logo (1).png" alt="logo" class="receipt-logo">
             <h1 class="receipt-title">Kvitto</h1>
             <p class="order-id">#</p>
-
+            
             <div class="receipt-items"></div>
         </div>
-
+        
         <!-- Total sektion -->
         <div class="total-section">
             <div class="total-info">
@@ -94,7 +91,7 @@
             </div>
             <div class="total-price">120 SEK</div>
         </div>
-
+        
         <!-- Ny beställning knapp -->
         <button class="btn btn-new-order">Gör en ny beställning</button>
     </div>

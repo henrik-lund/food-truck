@@ -13,6 +13,7 @@
     flex-direction: column;
     background: #489078;
     padding: 2em;
+    min-height: 100vh;
 }
 
 .menu-view.active {
@@ -44,10 +45,7 @@
     align-items: center;
     justify-content: center;
 }
-/* .receipt-view{
-    background-color: #353131;
-    padding: 2em;
-} */
+
 .receipt-view {
     background-color: #353131;
     padding: 2em;

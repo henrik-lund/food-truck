@@ -1,13 +1,18 @@
 import { cart } from './menu.js';
-import { generateOrderId } from './eta.js';
+import { switchView } from './views.js';
+import { apiKey, tenantId } from './api.js'; 
 
-
+const iconWrapper = document.querySelector('.icon-wrapper');
+const cartIcon = document.querySelector('.cart-icon');
+const btnOrder = document.querySelector('.btn-order');
+let lastOrderId = null;
 function switchToCart() {
-    document.querySelector('.menu-view').classList.remove('active');
-    document.querySelector('.cart-view').classList.add('active');
+    switchView('menu-view', 'cart-view');
     renderCart(); 
 }
-
+function switchToMenu() {
+    switchView('cart-view', 'menu-view');
+}
 function renderCart() {
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.innerHTML = ''; 
@@ -27,72 +32,106 @@ function renderCart() {
             </div>
         `;
         cartItemsContainer.appendChild(cartItemDiv);
-    
+        
         const increaseBtn = cartItemDiv.querySelector('.btn-increase');
         const decreaseBtn = cartItemDiv.querySelector('.btn-decrease');
         
-        increaseBtn.addEventListener('click', () => increaseQuantity(item.id));
-        decreaseBtn.addEventListener('click', () => decreaseQuantity(item.id));
+    increaseBtn.addEventListener('click', () => updateQuantity(item.id, 1));
+    decreaseBtn.addEventListener('click', () => updateQuantity(item.id, -1));
     });
-    
     updateTotal();
 }
-
 function updateTotal() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     document.querySelector('.total-price').textContent = total + ' SEK';
 }
-
-
-function increaseQuantity(itemId) {
+function updateQuantity(itemId, change) {
     const item = cart.find(cartItem => cartItem.id === itemId);
-    if (item) {
-        item.quantity += 1;
-        renderCart();
-    }
-}
-
-function decreaseQuantity(itemId) {
-    const item = cart.find(cartItem => cartItem.id === itemId);
-    if (item) {
-        if (item.quantity > 1) {
-            item.quantity -= 1;
-        } else {
-            const index = cart.findIndex(cartItem => cartItem.id === itemId);
-            cart.splice(index, 1);
-        }
-        renderCart();
-    }
-}
-document.querySelector('.icon-wrapper').addEventListener('click', switchToCart);
-document.querySelector('.btn-order').addEventListener('click', () => {
-    document.querySelector('.cart-view').classList.remove('active');
-    document.querySelector('.eta-view').classList.add('active');
-    const orderId = generateOrderId();
-    document.querySelector('.eta-view .order-id').textContent = orderId;
-    const wontons = cart.filter(item => item.type === 'wonton');
-    const dips = cart.filter(item => item.type === 'dip');
-    const drinks = cart.filter(item => item.type === 'drink');
-    let title = '';
-    if (wontons.length > 0 && dips.length === 0 && drinks.length === 0) {
-        // Endast wontons
-        if (wontons.length === 1 && wontons[0].quantity === 1) {
-            title = `Din ${wontons[0].name} tillagas!`;
-        } else {
-            title = 'Dina wontons tillagas!';
-        }
-    } else if (dips.length > 0 && wontons.length === 0 && drinks.length === 0) {
-        // Endast dips
-        title = 'Dina dipsåser är klara!';
-    } else if (drinks.length > 0 && wontons.length === 0 && dips.length === 0) {
-        // Endast drycker
-        title = 'Dina drycker är klara!';
-    } else {
-        // Blandad beställning
-        title = 'Din beställning tillagas!';
-    }
+    if (!item) return;
     
-    document.querySelector('.eta-view .eta-title').textContent = title;
+    item.quantity += change;
+    if (item.quantity <= 0) {
+        cart.splice(cart.indexOf(item), 1);
+    }
+    renderCart();
+}
+function getOrderTitle(mainDishes, dips, drinks) {
+    if (mainDishes.length > 0 && dips.length === 0 && drinks.length === 0) {
+        const dishName = mainDishes[0].name;
+        const allSameDish = mainDishes.every(item => item.name === dishName);
+        if (allSameDish) {
+            if (dishName === 'Karlstad') {
+                return 'Dina wontons tillagas!';
+            } else {
+                const isPlural = mainDishes.length > 1 || mainDishes[0].quantity > 1;
+                return isPlural 
+                    ? `Dina ${dishName}s tillagas!` 
+                    : `Din ${dishName} tillagas!`;
+            }
+        } else {
+            return 'Din mat tillagas!';
+        }
+    } else if (dips.length > 0 && mainDishes.length === 0 && drinks.length === 0) {
+        const isPlural = dips.length > 1 || dips[0].quantity > 1;
+        return isPlural ? 'Dina dipsåser kan hämtas!' : 'Din dipsås kan hämtas!';
+    } else if (drinks.length > 0 && mainDishes.length === 0 && dips.length === 0) {
+        const isPlural = drinks.length > 1 || drinks[0].quantity > 1;
+        return isPlural ? 'Dina drycker kan hämtas!' : 'Din dricka kan hämtas!';
+    } else {
+        return 'Din beställning tillagas!';
+    }
+}
+async function submitOrder(orderItems) {
+    try {
+        const url = `https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/${tenantId}/orders`;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-zocom': apiKey
+            },
+            body: JSON.stringify({
+                items: orderItems.flatMap(item => Array(item.quantity).fill(item.id))
+            })
+        });
+        if (!response.ok) {
+            throw new Error('Beställningen misslyckades');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Fel vid beställning:', error);
+        throw error;
+    }
+}
+iconWrapper.addEventListener('click', switchToCart);
+cartIcon.addEventListener('click', switchToMenu);
+btnOrder.addEventListener('click', async () => {
+    try {
+        switchView('cart-view', 'eta-view');
+        
+        // Skicka order till API
+        const orderData = await submitOrder(cart);
+        lastOrderId = orderData.order.id;
+        
+        document.querySelector('.eta-view .order-id').textContent = '#' + orderData.order.id;
+        
+        // Beräkna ETA baserat på antal items
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const etaMinutes = totalItems <= 2 ? 5 : totalItems <= 5 ? 10 : 15;
+        document.querySelector('.eta-view .eta-time').textContent = `ETA ${etaMinutes} MIN`;
+        
+        // Filtrera items och generera titel
+        const mainDishes = cart.filter(item => item.type === 'wonton');
+        const dips = cart.filter(item => item.type === 'dip');
+        const drinks = cart.filter(item => item.type === 'drink');
+        const title = getOrderTitle(mainDishes, dips, drinks);
+        document.querySelector('.eta-view .eta-title').textContent = title;
+    } catch (error) {
+        switchView('eta-view', 'cart-view');
+    }
 });
-
-export { switchToCart, renderCart, increaseQuantity, decreaseQuantity };
+export function getLastOrderId() {
+    return lastOrderId;
+}
+export { switchToCart, renderCart, updateQuantity };

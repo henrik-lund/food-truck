@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 body {
     font-family: "Arial", sans-serif;
     color: #ECEAE7;
@@ -8,17 +13,18 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     margin: auto;
-    background: #489078;
     padding: 24px;
     box-sizing: border-box;
 }
+
 .icon-wrapper {
     position: relative;
     display: inline-block;
     align-self: flex-end;
+    margin-right: 24px;
 }
 
 .icon {
@@ -38,9 +44,9 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: #FF6B6B;  /* Röd färg */
+    background-color: #FF6B6B;  
     color: white;
-    border-radius: 50%;  /* Gör det cirkulärt */
+    border-radius: 50%;  
     width: 32px;
     height: 32px;
     display: none;
@@ -50,16 +56,36 @@ body {
     font-size: 18px;
 }
 
-.card {
-    background: #4b4446;
-    padding: 2em;
-    border-radius: 18px;
-    margin-bottom: 24px;
+#menu-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
 }
 .menu-title {
-    font-size: 32px;
-    margin-bottom: 12px;
+    font-size: 40px;
+    margin: 0 auto 24px;
+    max-width: 500px;
+    width: 100%;
+    padding: 0 115px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;  
+
+
 }
+.card {
+    background: #4b4446;
+    padding: 2.5em;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 .food, .dip, .drink {
     display: flex;
@@ -116,4 +142,64 @@ body {
 
 .menu-btns button:hover {
     background: #353131;
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding: 16px;
+        margin: 0;
+    }
+    
+    .icon-wrapper {
+        margin-right: 16px;  
+    }
+    
+    .icon {
+        width: 50px;   
+        height: 50px;
+        padding: 0.6em;
+    }
+    
+    #cart-count {
+        width: 24px;  
+        height: 24px;
+        font-size: 14px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    #menu-container {
+        max-width: 100%;  
+        padding: 0 16px;
+    }
+    
+    .menu-title {
+        font-size: 32px;  
+        max-width: 100%;
+        padding: 0 16px;  
+        margin-left: 0;
+    }
+    
+    .card {
+        padding: 1.5em;
+        margin-bottom: 16px;
+    }
+    
+    .food-name, .dips-title, .drink-title {
+        font-size: 14px;  
+    }
+    
+    .description {
+        font-size: 12px;
+    }
+    
+    .menu-btns {
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 8px;
+    }
+    
+    .menu-btns button {
+        padding: 8px;
+        font-size: 13px;
+    }
 }

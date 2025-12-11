@@ -1,5 +1,4 @@
-import { addToCart } from './menu.js';
-import { renderMenu } from './menu.js';
+import { addToCart, renderMenu } from './menu.js';
 
 function renderDips(dips, container) {
   if (dips.length > 0) {
@@ -14,10 +13,8 @@ function renderDips(dips, container) {
       <span class="price">${dips[0].price} SEK</span>
     `;
     dipsCard.appendChild(dipsHeader);
-    
     const dipsButtons = document.createElement('div');
     dipsButtons.className = 'menu-btns';
-    
     dips.forEach(dip => {
       const button = document.createElement('button');
       button.textContent = dip.name;
@@ -26,7 +23,6 @@ function renderDips(dips, container) {
       button.addEventListener('click', () => addToCart(dip));
       dipsButtons.appendChild(button);
     });
-    
     dipsCard.appendChild(dipsButtons);
     container.appendChild(dipsCard);
   }

@@ -19,6 +19,10 @@
     height: 40px;
     color: black;
 }
+.cart-icon:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
 
 .cart-item {
     border-bottom: 2px dotted #ccc;
