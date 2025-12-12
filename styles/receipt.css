@@ -14,9 +14,9 @@
 
 .receipt {
     background: white;
-    border-radius: 20px;
+    border-radius: 12px 12px 0 0 ;
     padding: 2em;
-    max-width: 500px;
+    /* max-width: 500px; */
     width: 100%;
     text-align: center;
 }
@@ -68,18 +68,20 @@
 }
 
 .total-section {
-    background: #e0e0e0;
+    background: #b6b6b6;
     padding: 1.5em;
-    border-radius: 10px;
-    margin: 2em 0;
+    border-radius: 0 0 12px 12px;
+    margin-top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: black;
+    gap: 20px;
+    width: 100%;
 }
 
 .total-info h2 {
-    font-size: 18px;
-    margin: 0;
+    font-size: 30px;
 }
 
 .total-info p {
@@ -88,7 +90,3 @@
     margin: 0.5em 0 0 0;
 }
 
-.total-price {
-    font-size: 32px;
-    font-weight: bold;
-}

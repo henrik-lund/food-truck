@@ -13,17 +13,25 @@ body {
 
 .container {
     display: flex;
-    flex-direction: row;
     width: 100%;
-    margin: auto;
     padding: 24px;
     box-sizing: border-box;
 }
+.menu-title {
+    width: 100%;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    align-items: flex-start;
+}
 
 .icon-wrapper {
-    position: relative;
-    display: inline-block;
-    align-self: flex-end;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
     margin-right: 24px;
 }
 
@@ -57,33 +65,22 @@ body {
 }
 
 #menu-container {
-    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start
 }
-.menu-title {
-    font-size: 40px;
-    margin: 0 auto 24px;
-    max-width: 500px;
-    width: 100%;
-    padding: 0 115px;
-    font-weight: 700;
-    color: #FFFFFF;
-    text-transform: uppercase;  
 
-
-}
 .card {
     background: #4b4446;
     padding: 2.5em;
     border-radius: 18px;
     margin-bottom: 24px;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
+
 }
 
 
@@ -100,6 +97,10 @@ body {
     line-height: 1;
     display: inline-block;
     color: #ECEAE7;
+    text-transform: uppercase;
+}
+.drink-title, .dips-title {
+    font-size: 1.5em;
 }
 .food-name:hover {
     cursor: pointer;
@@ -122,6 +123,8 @@ body {
     color: #e3e3e3;
     margin: 4px 0 16px;
     font-size: 14px;
+    border-bottom: 2px dashed #F1F0EC3D;
+    padding-bottom: 12px;
 }
 .menu-btns {
     margin-top: 20px;
