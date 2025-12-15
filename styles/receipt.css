@@ -1,8 +1,5 @@
 
 .receipt-view {
-    background-color: #353131;
-    display: none;
-    padding: 2em;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -16,7 +13,6 @@
     background: white;
     border-radius: 12px 12px 0 0 ;
     padding: 2em;
-    /* max-width: 500px; */
     width: 100%;
     text-align: center;
 }
