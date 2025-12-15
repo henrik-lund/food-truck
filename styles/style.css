@@ -6,8 +6,6 @@
 body {
     font-family: "Arial", sans-serif;
     color: #ECEAE7;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
 }
 
@@ -15,7 +13,6 @@ body {
     display: flex;
     width: 100%;
     padding: 24px;
-    box-sizing: border-box;
 }
 .menu-title {
     width: 100%;

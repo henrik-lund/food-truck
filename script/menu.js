@@ -55,7 +55,19 @@ async function initMenu() {
         const menuItems = response.items || response;
         renderMenu(menuItems);
     } catch (error) {
+        showErrorMessage('Kunde inte ladda menyn. Försök igen senare.');
     }
+}
+function showErrorMessage(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    document.body.appendChild(errorDiv);
+    
+    // Ta bort efter 3 sekunder
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 3000);
 }
 function addToCart(item) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
