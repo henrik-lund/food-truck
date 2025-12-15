@@ -1,23 +1,38 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 body {
     font-family: "Arial", sans-serif;
     color: #ECEAE7;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    margin: auto;
-    background: #489078;
     padding: 24px;
     box-sizing: border-box;
 }
+.menu-title {
+    width: 100%;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    align-items: flex-start;
+}
+
 .icon-wrapper {
-    position: relative;
-    display: inline-block;
-    align-self: flex-end;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    margin-right: 24px;
 }
 
 .icon {
@@ -37,9 +52,9 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: #FF6B6B;  /* Röd färg */
+    background-color: #FF6B6B;  
     color: white;
-    border-radius: 50%;  /* Gör det cirkulärt */
+    border-radius: 50%;  
     width: 32px;
     height: 32px;
     display: none;
@@ -49,16 +64,25 @@ body {
     font-size: 18px;
 }
 
+#menu-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
 .card {
     background: #4b4446;
-    padding: 2em;
+    padding: 2.5em;
     border-radius: 18px;
     margin-bottom: 24px;
+    width: 100%;
+    align-items: center;
+
 }
-.menu-title {
-    font-size: 32px;
-    margin-bottom: 12px;
-}
+
 
 .food, .dip, .drink {
     display: flex;
@@ -73,6 +97,10 @@ body {
     line-height: 1;
     display: inline-block;
     color: #ECEAE7;
+    text-transform: uppercase;
+}
+.drink-title, .dips-title {
+    font-size: 1.5em;
 }
 .food-name:hover {
     cursor: pointer;
@@ -95,6 +123,8 @@ body {
     color: #e3e3e3;
     margin: 4px 0 16px;
     font-size: 14px;
+    border-bottom: 2px dashed #F1F0EC3D;
+    padding-bottom: 12px;
 }
 .menu-btns {
     margin-top: 20px;
@@ -115,4 +145,64 @@ body {
 
 .menu-btns button:hover {
     background: #353131;
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding: 16px;
+        margin: 0;
+    }
+    
+    .icon-wrapper {
+        margin-right: 16px;  
+    }
+    
+    .icon {
+        width: 50px;   
+        height: 50px;
+        padding: 0.6em;
+    }
+    
+    #cart-count {
+        width: 24px;  
+        height: 24px;
+        font-size: 14px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    #menu-container {
+        max-width: 100%;  
+        padding: 0 16px;
+    }
+    
+    .menu-title {
+        font-size: 32px;  
+        max-width: 100%;
+        padding: 0 16px;  
+        margin-left: 0;
+    }
+    
+    .card {
+        padding: 1.5em;
+        margin-bottom: 16px;
+    }
+    
+    .food-name, .dips-title, .drink-title {
+        font-size: 14px;  
+    }
+    
+    .description {
+        font-size: 12px;
+    }
+    
+    .menu-btns {
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 8px;
+    }
+    
+    .menu-btns button {
+        padding: 8px;
+        font-size: 13px;
+    }
 }

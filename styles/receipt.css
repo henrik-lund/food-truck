@@ -1,0 +1,92 @@
+
+.receipt-view {
+    background-color: #353131;
+    display: none;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.receipt-view.active {
+    display: flex;
+}
+
+.receipt {
+    background: white;
+    border-radius: 12px 12px 0 0 ;
+    padding: 2em;
+    /* max-width: 500px; */
+    width: 100%;
+    text-align: center;
+}
+
+.receipt-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 1em 0;
+    color: black;
+}
+
+.order-id {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 1.5em;
+}
+
+.receipt-items {
+    margin: 2em 0;
+    text-align: left;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 0.5em;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.item-quantity {
+    font-size: 14px;
+    color: #666;
+}
+
+.item-price {
+    font-weight: bold;
+    text-align: right;
+}
+
+.total-section {
+    background: #b6b6b6;
+    padding: 1.5em;
+    border-radius: 0 0 12px 12px;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    gap: 20px;
+    width: 100%;
+}
+
+.total-info h2 {
+    font-size: 30px;
+}
+
+.total-info p {
+    font-size: 12px;
+    color: #666;
+    margin: 0.5em 0 0 0;
+}
+

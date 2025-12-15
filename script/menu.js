@@ -3,18 +3,14 @@ import { renderDrinks } from './drinks.js';
 
 let apiKey = null;
 let cart = [];
+const cartCountElement = document.querySelector('#cart-count');
 
-export function setApiKey(key) {
-    apiKey = key;
-}
+export function setApiKey(key) {apiKey = key;}
 
 async function getMenu() {
     const response = await fetch('https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/menu', {
-        headers: {
-            'x-zocom': apiKey
-        }
-    });
-    
+        headers: {'x-zocom': apiKey}
+});
     const menu = await response.json();
     return menu;
 }
@@ -22,53 +18,45 @@ async function getMenu() {
 function renderMenu(menuItems) {
     const container = document.querySelector('#menu-container');
     container.innerHTML = '';
-    const wontons = menuItems.filter(item => item.type === 'wonton');
+    const mainDishes = menuItems.filter(item => item.type === 'wonton');
     const dips = menuItems.filter(item => item.type === 'dip');
     const drinks = menuItems.filter(item => item.type === 'drink');
     
-    if (wontons.length > 0) {
-        const wontonsCard = document.createElement('div');
-        wontonsCard.className = 'card';
+    if (mainDishes.length > 0) {
+        const mainDishesCard = document.createElement('div');
+        mainDishesCard.className = 'card';
         
-        wontons.forEach(wonton => {
+        mainDishes.forEach(mainDish => {
             const foodDiv = document.createElement('div');
             foodDiv.className = 'food';
             foodDiv.innerHTML = `
-        <span class="food-name">${wonton.name}</span>
+        <span class="food-name">${mainDish.name.toUpperCase()}</span>
         <span class="dots"></span>
-        <span class="price">${wonton.price} SEK</span>`;
-            wontonsCard.appendChild(foodDiv);
-            if (wonton.ingredients && wonton.ingredients.length > 0) {
+        <span class="price">${mainDish.price} SEK</span>`;
+            mainDishesCard.appendChild(foodDiv);
+            if (mainDish.ingredients && mainDish.ingredients.length > 0) {
                 const description = document.createElement('p');
                 description.className = 'description';
-                description.textContent = wonton.ingredients.join(', ');
-                wontonsCard.appendChild(description);
+                description.textContent = mainDish.ingredients.join(', ');
+                mainDishesCard.appendChild(description);
             }
             foodDiv.style.cursor = 'pointer';
-            foodDiv.addEventListener('click', () => addToCart(wonton));
+            foodDiv.addEventListener('click', () => addToCart(mainDish));
         });
         
-        container.appendChild(wontonsCard);
+        container.appendChild(mainDishesCard);
     }
-    
-    // Rendera Dipsåser
     renderDips(dips, container);
-    
-    // Rendera Drycker
     renderDrinks(drinks, container);
 } 
-
 async function initMenu() {
     try {
         const response = await getMenu();
         const menuItems = response.items || response;
-        console.log('Menu items från API:', menuItems);
         renderMenu(menuItems);
     } catch (error) {
-        console.error('Fel vid hämtning av meny:', error);
     }
 }
-
 function addToCart(item) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     
@@ -80,21 +68,11 @@ function addToCart(item) {
             quantity: 1
         });
     }
-    
-    console.log('Nuvarande varukorg:', cart);
     updateCartUI(); 
 }
-
 function updateCartUI() {
-    const cartCount = document.querySelector('#cart-count');
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
-    if (totalItems > 0) {
-        cartCount.style.display = 'flex';  
-        cartCount.textContent = totalItems;
-    } else {
-        cartCount.style.display = 'none'; 
-    }
+    cartCountElement.style.display = totalItems > 0 ? 'flex' : 'none';
+    if (totalItems > 0) cartCountElement.textContent = totalItems;
 }
-
 export { renderMenu, addToCart, cart, updateCartUI, getMenu, initMenu };
