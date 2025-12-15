@@ -72,8 +72,11 @@
     justify-content: center;
 }
 
-.btn-quantity:hover {
-    background: #a0a0a0;
+.btn-decrease:hover {
+    background: #f70505;
+}
+.btn-increase:hover {
+    background: #4caf50;
 }
 
 .quantity-text {
