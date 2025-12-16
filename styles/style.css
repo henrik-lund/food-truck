@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
 }
+
 body {
     font-family: "Arial", sans-serif;
     color: #ECEAE7;
@@ -101,7 +102,7 @@ body {
 }
 .food:hover {
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .dots {
     flex: 1;
