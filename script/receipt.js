@@ -9,7 +9,7 @@ document.querySelector('.btn-receipt').addEventListener('click', () => {
     renderReceipt();
     
 });
-//Renderar kvitton med beställda varor och deras kvantiteter samt totalpris
+//Renderar kvitton med beställda varor och deras kvantitet samt totalpris
 function renderReceipt() {
     const receiptItemsContainer = document.querySelector('.receipt-items');
     receiptItemsContainer.innerHTML = '';
