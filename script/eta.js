@@ -11,6 +11,7 @@ document.querySelector('.btn-new-order').addEventListener('click', () => {
     switchView('eta-view', 'menu-view');
 });
 let currentOrderId = '';
+//Skapar ett unikt order-ID för varje beställning
 function generateOrderId() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let id = '';

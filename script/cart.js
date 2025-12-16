@@ -6,6 +6,7 @@ const iconWrapper = document.querySelector('.icon-wrapper');
 const cartIcon = document.querySelector('.cart-icon');
 const btnOrder = document.querySelector('.btn-order');
 let lastOrderId = null;
+//Byter vy från meny till kundvagn och renderar kundvagnen
 function switchToCart() {
     switchView('menu-view', 'cart-view');
     renderCart(); 
@@ -13,6 +14,7 @@ function switchToCart() {
 function switchToMenu() {
     switchView('cart-view', 'menu-view');
 }
+//Renderar kundvagnen med dess innehåll samt skapar +/- knappar för att ändra kvantitet
 function renderCart() {
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.innerHTML = ''; 
@@ -41,10 +43,12 @@ function renderCart() {
     });
     updateTotal();
 }
+//Uppdaterar totalpriset i kundvagnen
 function updateTotal() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     document.querySelector('.total-price').textContent = total + ' SEK';
 }
+//Uppdaterar kvantiteten för en vara i kundvagnen och tar bort varan om kvantiteten blir noll.
 function updateQuantity(itemId, change) {
     const item = cart.find(cartItem => cartItem.id === itemId);
     if (!item) return;
@@ -55,6 +59,7 @@ function updateQuantity(itemId, change) {
     }
     renderCart();
 }
+//Ändrar titeln i ETA vyn baserat på innehållet i kundvagnen
 function getOrderTitle(mainDishes, dips, drinks) {
     if (mainDishes.length > 0 && dips.length === 0 && drinks.length === 0) {
         const dishName = mainDishes[0].name;
@@ -81,6 +86,7 @@ function getOrderTitle(mainDishes, dips, drinks) {
         return 'Din beställning tillagas!';
     }
 }
+//Skickar beställningen till API:et
 async function submitOrder(orderItems) {
     try {
         const url = `https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/${tenantId}/orders`;

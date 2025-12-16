@@ -1,5 +1,5 @@
 import { addToCart, renderMenu } from './menu.js';
-
+//Renderar drycker i menyn med tillhörande knappar för att lägga till i kundvagnen
 function renderDrinks(drinks, container) {
     if (drinks.length > 0) {
         const drinksCard = document.createElement('div');

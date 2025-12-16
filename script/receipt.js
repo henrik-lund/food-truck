@@ -9,6 +9,7 @@ document.querySelector('.btn-receipt').addEventListener('click', () => {
     renderReceipt();
     
 });
+//Renderar kvitton med beställda varor och deras kvantiteter samt totalpris
 function renderReceipt() {
     const receiptItemsContainer = document.querySelector('.receipt-items');
     receiptItemsContainer.innerHTML = '';
@@ -24,7 +25,7 @@ function renderReceipt() {
         `;
         receiptItemsContainer.appendChild(itemDiv);
     });
-    
+    //Visar order-ID och totalpris på kvittot
     document.querySelector('.receipt-view .order-id').textContent = '#' + getLastOrderId();
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     document.querySelector('.receipt-view .total-price').textContent = total + ' SEK';
