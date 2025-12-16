@@ -38,8 +38,8 @@ function renderCart() {
         const increaseBtn = cartItemDiv.querySelector('.btn-increase');
         const decreaseBtn = cartItemDiv.querySelector('.btn-decrease');
         
-    increaseBtn.addEventListener('click', () => updateQuantity(item.id, 1));
-    decreaseBtn.addEventListener('click', () => updateQuantity(item.id, -1));
+        increaseBtn.addEventListener('click', () => updateQuantity(item.id, 1));
+        decreaseBtn.addEventListener('click', () => updateQuantity(item.id, -1));
     });
     updateTotal();
 }
