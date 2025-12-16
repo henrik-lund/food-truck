@@ -40,7 +40,6 @@ function renderMenu(menuItems) {
                 description.textContent = mainDish.ingredients.join(', ');
                 mainDishesCard.appendChild(description);
             }
-            foodDiv.style.cursor = 'pointer';
             foodDiv.addEventListener('click', () => addToCart(mainDish));
         });
         

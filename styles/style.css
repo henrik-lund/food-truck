@@ -99,7 +99,7 @@ body {
 .drink-title, .dips-title {
     font-size: 1.5em;
 }
-.food-name:hover {
+.food:hover {
     cursor: pointer;
     text-decoration: underline;
 }
