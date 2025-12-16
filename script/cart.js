@@ -100,9 +100,19 @@ async function submitOrder(orderItems) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Fel vid beställning:', error);
+        showErrorMessage('Beställningen misslyckades. Försök igen.');
         throw error;
     }
+}
+function showErrorMessage(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    document.body.appendChild(errorDiv);
+    
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 3000);
 }
 iconWrapper.addEventListener('click', switchToCart);
 cartIcon.addEventListener('click', switchToMenu);
