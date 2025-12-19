@@ -1,5 +1,5 @@
 import { addToCart, renderMenu } from './menu.js';
-
+//Renderar dipsåser i menyn med tillhörande knappar för att lägga till i kundvagnen
 function renderDips(dips, container) {
   if (dips.length > 0) {
     const dipsCard = document.createElement('div');
