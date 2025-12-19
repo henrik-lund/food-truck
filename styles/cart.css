@@ -1,3 +1,12 @@
+.test{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 390px;
+    height: auto;
+    z-index: 200;
+    opacity: 0.5;
+}
 .cart {
     display: flex;
     flex-direction: column;
@@ -14,9 +23,11 @@
 }
 
 .cart-icon {
-    width: 40px;
-    height: 40px;
+    width: 37px;
+    height: 37px;
     color: black;
+    margin-top: 34px;
+    margin-right: -40px;
 }
 .cart-icon:hover{
     cursor: pointer;
