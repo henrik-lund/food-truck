@@ -1,0 +1,208 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    color: #ECEAE7;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    padding: 24px;
+}
+.menu-title {
+    width: 100%;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    align-items: flex-start;
+}
+
+.icon-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    z-index: 100;
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    margin-right: 24px;
+}
+
+.icon {
+    width: 75px;
+    height: 76px;
+    padding: 1em;
+    border-radius: 0.3em;
+    color: black;
+    background-color: white;
+}
+.icon:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#cart-count{
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #FF6B6B;  
+    color: white;
+    border-radius: 50%;  
+    width: 32px;
+    height: 32px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#menu-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+.card {
+    background: #4b4446;
+    padding: 2.5em;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    width: 100%;
+    align-items: center;
+
+}
+
+
+.food, .dip, .drink {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 14px;
+}
+
+.food-name, .dips-title, .drink-title {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: inline-block;
+    color: #ECEAE7;
+    text-transform: uppercase;
+}
+.drink-title, .dips-title {
+    font-size: 1.5em;
+}
+.food:hover {
+    cursor: pointer;
+}
+.dots {
+    flex: 1;
+    border-bottom: 3px dotted #ECEAE7;
+    margin: 0 10px;
+    height: 0; 
+}
+
+.price {
+    font-weight: 700;
+    line-height: 1;
+    display: inline-block;
+}
+
+.description {
+    color: #e3e3e3;
+    margin: 4px 0 16px;
+    font-size: 14px;
+    border-bottom: 2px dashed #F1F0EC3D;
+    padding-bottom: 12px;
+}
+.menu-btns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.menu-btns button {
+    background: #605858;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu-btns button:hover {
+    background: #353131;
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding: 16px;
+        margin: 0;
+    }
+    
+    .icon-wrapper {
+        margin-right: 18px;  
+    }
+    
+    .icon {
+        width: 60px;   
+        height: 60px;
+    }
+    
+    #cart-count {
+        width: 24px;  
+        height: 24px;
+        font-size: 14px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    #menu-container {
+        width: 415px; 
+        height: 815px;
+        padding: 0 16px;
+        padding-right: 38px;
+        margin-top: -9px;
+        margin-left: -24px;
+    }
+    
+    .menu-title {
+        font-size: 32px;  
+        max-width: 100%;
+        margin-top: 69px;
+        margin-left: -24px;
+    }
+    
+    .card {
+        padding: 1.5em;
+        margin-bottom: 16px;
+    }
+    
+    .food-name, .dips-title, .drink-title {
+        font-size: 14px;  
+    }
+    
+    .description {
+        font-size: 12px;
+    }
+    
+    .menu-btns {
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 8px;
+    }
+    
+    .menu-btns button {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
