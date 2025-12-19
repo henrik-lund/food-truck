@@ -25,7 +25,7 @@ body {
 .icon-wrapper {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 10px;
     z-index: 100;
     display: flex;
     align-self: flex-start;
@@ -102,7 +102,6 @@ body {
 }
 .food:hover {
     cursor: pointer;
-    /* text-decoration: underline; */
 }
 .dots {
     flex: 1;
@@ -152,13 +151,12 @@ body {
     }
     
     .icon-wrapper {
-        margin-right: 16px;  
+        margin-right: 18px;  
     }
     
     .icon {
-        width: 50px;   
-        height: 50px;
-        padding: 0.6em;
+        width: 60px;   
+        height: 60px;
     }
     
     #cart-count {
@@ -170,15 +168,19 @@ body {
     }
     
     #menu-container {
-        max-width: 100%;  
+        width: 415px; 
+        height: 815px;
         padding: 0 16px;
+        padding-right: 38px;
+        margin-top: -9px;
+        margin-left: -24px;
     }
     
     .menu-title {
         font-size: 32px;  
         max-width: 100%;
-        padding: 0 16px;  
-        margin-left: 0;
+        margin-top: 69px;
+        margin-left: -24px;
     }
     
     .card {

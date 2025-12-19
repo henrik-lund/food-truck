@@ -21,6 +21,7 @@
 .menu-view.active {
     display: flex;
     align-items: center;
+    padding: 12px;
 }
 
 .cart-view {
